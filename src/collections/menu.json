@@ -1,0 +1,22 @@
+[
+    {
+		"name": "About",
+		"url": "/about",
+        "highlighted": false
+	},
+	{
+		"name": "Projects",
+		"url": "/projects",
+        "highlighted": false
+	},
+    {
+		"name": "CV",
+		"url": "/cv",
+        "highlighted": false
+	},
+    {
+		"name": "Contact",
+		"url": "/contact",
+        "highlighted": true
+	}
+]
