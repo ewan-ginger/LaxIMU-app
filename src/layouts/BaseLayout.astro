@@ -24,7 +24,9 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-gradient-to-b from-slate-800 to-blue-700 min-h-screen flex flex-col justify-between">
 		<Header />
-		<slot class="flex-grow"/>
+		<main class="py-8 flex flex-col items-center justify-between h-full max-w-7xl pl-6 pr-6 mx-auto">
+			<slot class="flex-grow"/>
+		</main>
 		<Footer />
 	</body>
 </html>
