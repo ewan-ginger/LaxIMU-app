@@ -1,9 +1,25 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import projects from "../collections/projects.json";
+import ProjectThumb from "../components/ProjectThumb.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Projects">
-    <h1>
-        HELLO
-    </h1>
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <div
+      class="z-50 grid items-stretch w-full grid-cols-1 my-8 gap-7 sm:gap-5 sm:grid-cols-2"
+    >
+      {
+        projects.map((project) => {
+          return (
+            <ProjectThumb
+              name={project.name}
+              image={project.image}
+              url={project.url}
+            />
+          )
+        })
+      }
+    </div>
+  </section>
 </BaseLayout>
