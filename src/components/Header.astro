@@ -1,13 +1,19 @@
 ---
 import menus from "../collections/menu.json";
 import Logo from "../components/Logo.astro";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
   <div
-    class="bg-slate-800 flex items-center justify-between h-full max-w-7xl pl-6 pr-6 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl"
+    class="bg-light-primary dark:bg-dark-primary flex items-center justify-between h-full max-w-7xl pl-6 pr-6 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl"
   >
     <Logo />
     <div
@@ -24,7 +30,7 @@ import Logo from "../components/Logo.astro";
         class="flex flex-col items-end justify-center w-6 h-6 ml-4 cursor-pointer sm:hidden"
       >
         <svg
-          class="w-8 h-8 dark:text-neutral-200"
+          class="w-8 h-8 text-light-contrast dark:text-dark-contrast dark:text-neutral-200"
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -68,33 +74,44 @@ import Logo from "../components/Logo.astro";
                     </div>
                     <a
                         href={menu.url}
-                        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white"
+                        class="text-dark-text-white bg-gradient-to-r from-dark-secondary-gradient-end via-dark-secondary-gradient-via to-dark-secondary hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white"
                     >
                         {menu.name}
                     </a>
                 )
             } else {
+              if (menu.name == title) {
                 return (
                     <a
                         href={menu.url}
-                        class="relative flex h-10 items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white"
+                        class="text-light-contrast dark:text-dark-text-white font-medium relative flex h-10 items-center justify-center w-full px-3 py-2 tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-light-text-nav-hover dark:hover:text-dark-text-nav-hover"
                     >
                         {menu.name}
                     </a>
                 )
+              } else {
+                return (
+                    <a
+                        href={menu.url}
+                        class="text-light-text-nav dark:text-dark-text-nav relative flex h-10 items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-light-text-nav-hover dark:hover:text-dark-text-nav-hover"
+                    >
+                        {menu.name}
+                    </a>
+                )
+              }
             }
           })
         }
       </div>
       <div
-        id="darkToggle"
+        id="theme-toggle"
         class="relative flex items-center pl-6 ml-4 font-medium tracking-wide cursor-pointer text-neutral-800 group dark:text-white"
       >
         <div
           class="absolute left-0 flex items-center justify-center w-6 h-6 overflow-hidden border-b border-transparent horizon group-hover:border-neutral-600"
         >
           <svg
-            class="absolute w-6 h-6 transition duration-700 transform ease"
+            class="text-light-contrast dark:text-dark-contrast absolute hidden w-6 h-6 transition duration-700 transform ease transform: translate3d(0, 10px, 0)"
             id="sun"
             fill="none"
             stroke-linecap="round"
@@ -107,7 +124,7 @@ import Logo from "../components/Logo.astro";
             ></path></svg
           >
           <svg
-            class="absolute hidden w-6 h-6 transition duration-700 transform ease"
+            class="text-light-contrast dark:text-dark-contrast absolute hidden w-6 h-6 transition duration-700 transform ease"
             id="moon"
             fill="none"
             stroke-linecap="round"
@@ -120,11 +137,50 @@ import Logo from "../components/Logo.astro";
             ></path></svg
           >
         </div>
-        <span class="hidden sm:inline-block">
-          <span id="dayText" class="ml-2">Day mode</span>
-          <span id="nightText" class="hidden ml-2">Night mode</span>
-        </span>
       </div>
     </nav>
   </div>
 </header>
+
+<script>
+  var themeToggleDarkIcon = document.getElementById('moon');
+  var themeToggleLightIcon = document.getElementById('sun');
+
+  // Change the icons inside the button based on previous settings
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      themeToggleLightIcon.classList.remove('hidden');
+  } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+  }
+
+  var themeToggleBtn = document.getElementById('theme-toggle');
+
+  themeToggleBtn.addEventListener('click', function() {
+
+      // toggle icons inside button
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      // if set via local storage previously
+      if (localStorage.getItem('color-theme')) {
+          if (localStorage.getItem('color-theme') === 'light') {
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('color-theme', 'dark');
+          } else {
+              document.documentElement.classList.remove('dark');
+              localStorage.setItem('color-theme', 'light');
+          }
+
+      // if NOT set via local storage previously
+      } else {
+          if (document.documentElement.classList.contains('dark')) {
+              document.documentElement.classList.remove('dark');
+              localStorage.setItem('color-theme', 'light');
+          } else {
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('color-theme', 'dark');
+          }
+      }
+      
+  });
+</script>
