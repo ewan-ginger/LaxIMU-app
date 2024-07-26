@@ -5,19 +5,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Projects">
-  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+  <section class="relative w-full mx-auto lg:px-0">
     <div
-      class="z-50 grid items-stretch w-full grid-cols-1 my-8 gap-7 sm:gap-5 sm:grid-cols-2"
+      class="grid items-stretch w-full grid-cols-1 my-8 gap-1 sm:grid-cols-2"
     >
       {
         projects.map((project) => {
-          return (
+          if (project.row == 1) {
+            return (
             <ProjectThumb
               name={project.name}
               image={project.image}
               url={project.url}
             />
           )
+          }
+        })
+      }
+    </div>
+    <div
+      class="grid items-stretch w-full grid-cols-1 my-8 gap-1 sm:grid-cols-3"
+    >
+      {
+        projects.map((project) => {
+          if (project.row == "other") {
+            return (
+            <ProjectThumb
+              name={project.name}
+              image={project.image}
+              url={project.url}
+            />
+          )
+          }
         })
       }
     </div>
