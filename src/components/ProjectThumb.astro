@@ -7,9 +7,9 @@ const { name, description, url, image, row } = Astro.props;
   target="_blank"
   class="bg-transparent relative flex flex-col items-stretch w-full h-full"
 >
-<div class="bg-light-secondary dark:bg-dark-primary overflow-hidden">
+<div class="bg-light-project-thumb dark:bg-dark-project-thumb overflow-hidden rounded-lg">
     <img src={image} class="w-full h-auto hover:scale-[1.1] ease-in-out duration-300" />
 </div>
-<span class="font-bold pt-4">{name}</span>
-<span class="pb-8">{url}</span>
+<span class="text-black dark:text-white font-bold pt-4">{name}</span>
+<span class="text-text-nav pb-8">{url}</span>
 </a>
