@@ -1,9 +1,49 @@
 ---
+import experiences from '../collections/experiences.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Experience from '../components/Experience.astro';
 ---
 
 <BaseLayout title="About">
     <h1>
         HELLO
     </h1>
+    <div class="grid flex-col grid-cols-3">
+        <img class="rounded-lg" src="../assets/About_Picture.jpg">
+    </div>
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Experience
+    </h2>
+    <div class="px-5 py-10">
+      {
+        experiences.map((experience, loop) => {
+          return (
+            <>
+              {loop == 0 || loop == 1 ? (
+                <div class="pb-10 border-l border-text-nav dark:border-text-nav">
+                  <Experience
+                    dates={experience.dates}
+                    role={experience.role}
+                    company={experience.company}
+                    description={experience.description}
+                    logo={experience.logo}
+                  />
+                </div>
+              ) : (
+                <Experience
+                  dates={experience.dates}
+                  role={experience.role}
+                  company={experience.company}
+                  description={experience.description}
+                  logo={experience.logo}
+                />
+              )}
+            </>
+          )
+        })
+      }
+    </div>
 </BaseLayout>
