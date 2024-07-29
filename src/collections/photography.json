@@ -1,44 +1,50 @@
 [
     {
-        "image": "../assets/Photography/Two Telephone Boxes.png"
+        "image": "../assets/Photography/Two Telephone Boxes.png",
+        "orientation": "horizontal"
 	},
     {
-        "image": "../assets/Photography/Castle House.png"
+        "image": "../assets/Photography/Castle House.png",
+        "orientation": "horizontal"
 	},
     {
-        "image": "../assets/Photography/Kensington Olympia.png"
+        "image": "../assets/Photography/Ice Cream Truck.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Bishopgate Rooftop.png"
+        "image": "../assets/Photography/Imperial Statue.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Dark Desk.png"
+        "image": "../assets/Photography/Kensington Olympia.png",
+        "orientation": "horizontal"
 	},
     {
-        "image": "../assets/Photography/Debbie Jo.png"
+        "image": "../assets/Photography/Holland Park Japanese Garden.png",
+        "orientation": "horizontal"
 	},
     {
-        "image": "../assets/Photography/Holland Park Japanese Garden.png"
+        "image": "../assets/Photography/Kensington Palace Tree.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Ice Cream Truck.png"
+        "image": "../assets/Photography/Bishopgate Rooftop.png",
+        "orientation": "veritcal"
 	},
     {
-        "image": "../assets/Photography/Imperial Statue.png"
+        "image": "../assets/Photography/Dark Desk.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Kensington Olympia.png"
+        "image": "../assets/Photography/Weird Yellow Car.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Kensington Palace Tree.png"
+        "image": "../assets/Photography/Orange Tree.png",
+        "orientation": "vertical"
 	},
     {
-        "image": "../assets/Photography/Orange Tree.png"
-	},
-    {
-        "image": "../assets/Photography/Two Telephone Boxes.png"
-	},
-    {
-        "image": "../assets/Photography/Weird Yellow Car.png"
+        "image": "../assets/Photography/Debbie Jo.png",
+        "orientation": "horizontal"
 	}
 ]
