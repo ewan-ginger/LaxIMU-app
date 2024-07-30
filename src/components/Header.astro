@@ -55,7 +55,7 @@ const { title } = Astro.props;
       </div>
       <div
         id="menu"
-        class="bg-transparent dark:bg-transparent fixed top-[75px] ease-out duration-300 sm:top-0 w-full left-0 sm:py-0 pt-7 pb-4 dm:mx-0 left-0 z-40 flex-col items-end justify-start hidden w-full h-auto text-sm sm:text-base sm:h-auto sm:relative sm:flex-row sm:flex sm:text-sm sm:w-auto sm:pr-0 sm:pt-0"
+        class="bg-transparent dark:bg-transparent fixed top-[75px] ease-out duration-300 sm:top-0 w-full sm:py-0 pt-7 pb-4 dm:mx-0 left-0 z-40 flex-col items-end justify-start hidden h-auto text-sm sm:h-auto sm:relative sm:flex-row sm:flex sm:text-sm sm:w-auto sm:pr-0 sm:pt-0"
       >
         <div
           class="absolute inset-0 top-0 right-0 block w-full h-full px-3 sm:hidden"
@@ -157,8 +157,8 @@ const { title } = Astro.props;
 </header>
 
 <script>
-  var themeToggleDarkIcon = document.getElementById('moon');
-  var themeToggleLightIcon = document.getElementById('sun');
+  const themeToggleDarkIcon = document.getElementById('moon') as HTMLInputElement;
+  const themeToggleLightIcon = document.getElementById('sun') as HTMLInputElement;
 
   // Change the icons inside the button based on previous settings
   if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -167,7 +167,7 @@ const { title } = Astro.props;
       themeToggleDarkIcon.classList.remove('hidden');
   }
 
-  var themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtn = document.getElementById('theme-toggle') as HTMLInputElement;
 
   themeToggleBtn.addEventListener('click', function() {
 
@@ -198,29 +198,30 @@ const { title } = Astro.props;
       
   });
 
-  var openMenuBtn = document.getElementById('openMenu');
-  var closeMenuBtn = document.getElementById('closeMenu');
+  const openMenuBtn = document.getElementById('openMenu') as HTMLInputElement;
+  const closeMenuBtn = document.getElementById('closeMenu') as HTMLInputElement;
+  const menuBody = document.getElementById('menu') as HTMLInputElement;
+  const mobileMenuBackground = document.getElementById('mobileMenuBackground') as HTMLInputElement;
 
   openMenuBtn.addEventListener('click', function() {
 
-    document.getElementById("openMenu").classList.add("hidden");
-    document.getElementById("closeMenu").classList.remove("hidden");
-    document.getElementById("menu").classList.remove("hidden");
-    document.getElementById("mobileMenuBackground").classList.add("opacity-0");
-    document.getElementById("mobileMenuBackground").classList.remove("hidden");
+    openMenuBtn.classList.add("hidden");
+    closeMenuBtn.classList.remove("hidden");
+    menuBody.classList.remove("hidden");
+    mobileMenuBackground.classList.add("opacity-0");
+    mobileMenuBackground.classList.remove("hidden");
 
     setTimeout(() => {
-      document
-        .getElementById("mobileMenuBackground")
+      mobileMenuBackground
         .classList.remove("opacity-0");
     }, 1);
   });
 
   closeMenuBtn.addEventListener('click', function() {
-    document.getElementById("closeMenu").classList.add("hidden");
-    document.getElementById("openMenu").classList.remove("hidden");
-    document.getElementById("menu").classList.add("hidden");
-    document.getElementById("mobileMenuBackground").classList.add("hidden");
+    closeMenuBtn.classList.add("hidden");
+    openMenuBtn.classList.remove("hidden");
+    menuBody.classList.add("hidden");
+    mobileMenuBackground.classList.add("hidden");
   });
 
 </script>
