@@ -4,55 +4,71 @@
 		"description": "Hello",
 		"url": "/projects/sandscape",
         "image": "../assets/Projects/SandScape-Cover.png",
-		"row": 1
+		"row": 1,
+		"recent": true
 	},
 	{
 		"name": "NOAH",
 		"description": "Hello",
 		"url": "/projects/noah",
         "image": "../assets/Projects/Noah-Cover.png",
-		"row": 1
+		"row": 1,
+		"recent": true
 	},
 	{
 		"name": "Vehicle Design Aerodynamics",
 		"description": "Hello",
 		"url": "/projects/vehicle",
         "image": "../assets/Projects/Vehicle-Cover.png",
-		"row": "other"
+		"row": 2,
+		"recent": false
 	},
     {
 		"name": "UniSense",
 		"description": "Hello",
 		"url": "/projects/unisense",
         "image": "../assets/Projects/UniSense-Cover.png",
-		"row": "other"
+		"row": 2,
+		"recent": false
 	},
 	{
 		"name": "Bike Frame Design & FEA",
 		"description": "Hello",
 		"url": "/projects/bikeframe",
         "image": "../assets/Projects/BikeFrame-Cover.png",
-		"row": "other"
+		"row": 2,
+		"recent": false
 	},
 	{
 		"name": "Coutts Strongboxes",
 		"description": "Hello",
 		"url": "/projects/strongbox",
         "image": "../assets/Projects/Strongbox-Cover.png",
-		"row": "other"
+		"row": 3,
+		"recent": false
 	},
     {
 		"name": "Airline Passenger Satisfaction Data Analysis",
 		"description": "Hello",
 		"url": "/projects/datascience",
         "image": "../assets/Projects/DataScience-Cover.png",
-		"row": "other"
+		"row": 3,
+		"recent": false
 	},
 	{
 		"name": "Spaceships",
 		"description": "Hello",
 		"url": "/projects/spaceships",
         "image": "../assets/Projects/Spaceships-Cover.png",
-		"row": "other"
+		"row": 3,
+		"recent": false
+	},
+	{
+		"name": "LiveShape",
+		"description": "Hello",
+		"url": "/projects/liveshape",
+        "image": "../assets/Projects/LiveShape-Cover.png",
+		"row": 3,
+		"recent": true
 	}
 ]

@@ -32,7 +32,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     >
       {
         projects.map((project) => {
-          if (project.row == "other") {
+          if (project.row == 2) {
+            return (
+            <ProjectThumb
+              name={project.name}
+              description={project.description}
+              image={project.image}
+              url={project.url}
+            />
+          )
+          }
+        })
+      }
+    </div>
+    <div
+      class="grid items-stretch w-full grid-cols-1 my-8 gap-1 sm:grid-cols-4"
+    >
+      {
+        projects.map((project) => {
+          if (project.row == 3) {
             return (
             <ProjectThumb
               name={project.name}
