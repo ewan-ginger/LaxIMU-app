@@ -3,21 +3,36 @@
 		"dates": "APR 2024 - SEP 2024",
 		"role": "Software Engineer",
 		"company": "Coutts",
-		"description": "Responsible for customer service and CRM system front-end development.",
+		"description": [
+			"- IoT startup founded by ex-Google and ex-Morgan Stanley concentrated on intelligent level monitoring and automation of gas cylinders.",
+			"- Led an engineering research project to test the feasibility of a new technology within the product offering.",
+			"- Developed mechanical and electronic prototypes to test and evaluate.",
+			"- Gained industry knowledge liaising with experienced colleagues and consultants."
+		],
 		"logo": "/assets/Experience/Coutts.png"
 	},
 	{
 		"dates": "JUL 2023 - SEP 2023",
 		"role": "R&D Engineer",
 		"company": "TankTastic",
-		"description": "Responsible for mobile front-end development of e-commerce platform.",
+		"description": [
+			"- IoT startup founded by ex-Google and ex-Morgan Stanley concentrated on intelligent level monitoring and automation of gas cylinders.",
+			"- Led an engineering research project to test the feasibility of a new technology within the product offering.",
+			"- Developed mechanical and electronic prototypes to test and evaluate.",
+			"- Gained industry knowledge liaising with experienced colleagues and consultants."
+		],
 		"logo": "/assets/Experience/TankTastic.jpeg"
 	},
 	{
 		"dates": "JUL 2018 - AUG 2018 ",
 		"role": "Architect Assistant",
 		"company": "Tsiantar Architects",
-		"description": "Intern, involved in the development of Internet of Things cloud systems.",
+		"description": [
+			"- Drafted plans and layouts in AutoCAD.",
+			"- Shadowed client consultations.",
+			"- Visited and spoke with contractors on work sites.",
+			"- 3D modelled extensions and builds in CAD."
+		],
 		"logo": "/assets/Experience/Tsiantar.jpg"
 	}
 ]

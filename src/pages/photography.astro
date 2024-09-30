@@ -5,22 +5,78 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Photography">
-  <h1 class="font-[Jura] font-semibold text-5xl text-text-nav pb-8">
-    Crafting unique digital experiences where code and creativity converge to shape your vision in your everyday.
-  </h1>
-  <section class="relative z-20 w-full mx-auto my-12 px-7 lg:px-0">
+  <div class="grid items-stretch w-full grid-cols-1 my-8 gap-8 pb-8 sm:grid-cols-3">
+    <div class="col-span-2">
+      <h1 class="font-[Jura] font-semibold text-5xl text-text-nav pb-8">
+        Crafting unique digital.
+      </h1>
+      <h1 class="font-[Jura] font-semibold text-2xl text-text-nav pb-8">
+        Crafting unique digital experiences where code and creativity converge to shape your vision in your everyday.
+      </h1>
+    </div>
+    <div>
+      <img class="rounded-md" src="../assets/Photographer.png">
+    </div>
+  </div>
+  <h2 class="w-full text-5xl font-semibold font-['Jura'] text-text-nav">
+    Gallery
+  </h2>
+  <section class="relative z-20 w-full mx-auto my-12 lg:px-0">
     <div
-      class="z-50 grid items-stretch w-full grid-cols-1 my-8 gap-7 sm:gap-5 sm:grid-cols-2"
+      class="z-50 grid items-stretch w-full grid-cols-2 gap-2 sm:gap-2 sm:grid-cols-4"
     >
-      {
-        photography.map((photo) => {
-          return (
-            <PhotoCard
-              image={photo.image}
-            />
-          )
-        })
-      }
+      <div class="grid h-min items-stretch w-full grid-cols-1 gap-2">
+        {
+          photography.map((photo) => {
+            if (photo.column == 1) {
+              return (
+              <PhotoCard
+                image={photo.image}
+              />
+              )
+            }
+          })
+        }
+      </div>
+      <div class="grid h-min items-stretch w-full grid-cols-1 gap-2">
+        {
+          photography.map((photo) => {
+            if (photo.column == 2) {
+              return (
+              <PhotoCard
+                image={photo.image}
+              />
+              )
+            }
+          })
+        }
+      </div>
+      <div class="grid h-min items-stretch w-full grid-cols-1 gap-2">
+        {
+          photography.map((photo) => {
+            if (photo.column == 3) {
+              return (
+              <PhotoCard
+                image={photo.image}
+              />
+              )
+            }
+          })
+        }
+      </div>
+      <div class="grid h-min items-stretch w-full grid-cols-1 gap-2">
+        {
+          photography.map((photo) => {
+            if (photo.column == 4) {
+              return (
+              <PhotoCard
+                image={photo.image}
+              />
+              )
+            }
+          })
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

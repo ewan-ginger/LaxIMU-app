@@ -1,39 +1,43 @@
 ---
 import experiences from '../collections/experiences.json';
+import education from '../collections/education.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Experience from '../components/Experience.astro';
 ---
 
 <BaseLayout title="About">
-    <div class="bg-light-project-thumb dark:bg-dark-project-thumb p-8 rounded-xl grid flex-col grid-cols-1 lg:grid-cols-3 gap-16">
+    <div class=" p-8 pt-2 rounded-xl grid flex-col grid-cols-1 lg:grid-cols-3 gap-16">
+      <img class="rounded-lg" src="../assets/Smiley Ewan in Loule.png">
       <div class="col-span-2">
-        <h1 class="text-black dark:text-white text-5xl font-semibold font-['Jura'] pb-8">
-          About me
+        <h1 class="text-black dark:text-white text-6xl font-bold font-['Jura'] py-8">
+          GET TO KNOW ME.
         </h1>
-        <div class="grid lg:grid-cols-2 gap-10">
-          <h2 class="dark:text-text-nav text-xl">
-            Highly versatile engineer pursuing an integrated Masters in Engineering at Imperial College London. Possessing the abilities to carry a project from inception through to final solution with the firm belief that the integration of design thinking and technical engineering is vital to driving change and fostering innovation.
-          </h2>
-          <h2 class="dark:text-text-nav text-xl">
-            Highly versatile engineer pursuing an integrated Masters in Engineering at Imperial College London. Possessing the abilities to carry a project from inception through to final solution with the firm belief that the integration of design thinking and technical engineering is vital to driving change and fostering innovation.
-          </h2>
-        </div>
-      </div>
-      <img class="rounded-lg" src="../assets/About_Picture.jpg">
-    </div>
-
-    <div class="w-full p-8 grid grid-cols-1 gap-16 lg:grid-cols-3">
-      <div class="col-span-2">
-        <h2 class="mt-5 mb-2 text-5xl font-['Jura'] font-bold lg:mt-10 sm:mt-6 text-text-nav dark:text-text-nav">
-          Experience
+        <h2 class="text-3xl pb-8 font-['Jura'] font-bold text-text-nav dark:text-text-nav">
+          About
         </h2>
-        <div class="px-5 py-10">
-          {
-            experiences.map((experience, loop) => {
-              return (
-                <>
-                  {loop == 0 || loop == 1 ? (
-                    <div class="pb-10 border-l border-text-nav dark:border-text-nav">
+        <div class="grid lg:grid-cols-1 gap-10">
+          <h2 class="dark:text-text-nav text-xl">
+            A versatile engineer and designer pursuing an integrated Masters in Design Engineering at Imperial College London. Possessing the abilities to carry a project from inception through to final solution with the firm belief that the integration of design thinking and technical engineering is vital to driving change and fostering innovation. Interested in <a href="/photography" class="text-blue-medium underline">photography</a>.
+          </h2>
+          <h2 class="text-3xl font-['Jura'] font-bold text-text-nav dark:text-text-nav">
+            Experience
+          </h2>
+          <div class="pl-10">
+            {
+              experiences.map((experience, loop) => {
+                return (
+                  <>
+                    {loop == 0 || loop == 1 ? (
+                      <div class="pb-10 border-l border-text-nav dark:border-text-nav">
+                        <Experience
+                          dates={experience.dates}
+                          role={experience.role}
+                          company={experience.company}
+                          description={experience.description}
+                          logo={experience.logo}
+                        />
+                      </div>
+                    ) : (
                       <Experience
                         dates={experience.dates}
                         role={experience.role}
@@ -41,26 +45,48 @@ import Experience from '../components/Experience.astro';
                         description={experience.description}
                         logo={experience.logo}
                       />
-                    </div>
-                  ) : (
-                    <Experience
-                      dates={experience.dates}
-                      role={experience.role}
-                      company={experience.company}
-                      description={experience.description}
-                      logo={experience.logo}
-                    />
-                  )}
-                </>
-              )
-            })
-          }
+                    )}
+                  </>
+                )
+              })
+            }
+          </div>
+          <h2 class="text-3xl font-['Jura'] font-bold text-text-nav dark:text-text-nav">
+            Education
+          </h2>
+          <div class="pl-10">
+            {
+              education.map((education, loop) => {
+                return (
+                  <>
+                    {loop == 0 || loop == 1 ? (
+                      <div class="pb-10 border-l border-text-nav dark:border-text-nav">
+                        <Experience
+                          dates={education.dates}
+                          role={education.role}
+                          company={education.company}
+                          description={education.description}
+                          logo={education.logo}
+                        />
+                      </div>
+                    ) : (
+                      <Experience
+                        dates={education.dates}
+                        role={education.role}
+                        company={education.company}
+                        description={education.description}
+                        logo={education.logo}
+                      />
+                    )}
+                  </>
+                )
+              })
+            }
+          </div>
+          <h2 class="text-3xl font-['Jura'] font-bold text-text-nav dark:text-text-nav">
+            Skills
+          </h2>
         </div>
-      </div>
-      <div>
-        <h2 class="mt-5 mb-2 text-5xl font-['Jura'] font-bold lg:mt-10 sm:mt-6 text-text-nav dark:text-text-nav">
-          Skills
-        </h2>
       </div>
     </div>
 </BaseLayout>

@@ -1,10 +1,11 @@
 ---
+
 interface Props {
 	logo: string;
   dates: string;
   role: string;
   company: string;
-  description: string;
+  description: Array<string>;
 }
 
 const { logo, dates, role, company, description } = Astro.props;
@@ -14,7 +15,7 @@ const { logo, dates, role, company, description } = Astro.props;
   <div
     class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white rounded-lg dark:bg-neutral-950 w-14 h-14"
   >
-    <img src={logo} alt={company} class="w-10 h-auto z-0" />
+    <img src={logo} alt={company} class="w-12 h-auto z-0" />
   </div>
 
   <p
@@ -24,7 +25,16 @@ const { logo, dates, role, company, description } = Astro.props;
   </p>
   <h3 class="my-1 text-lg font-bold text-black dark:text-white">{role}</h3>
   <p class="mb-1 text-sm font-medium text-black dark:text-white">{company}</p>
-  <p class="text-sm font-light text-text-nav dark:text-text-nav">
-    {description}
+  <p class="text-sm font-light text-dark-background-medium dark:text-text-nav">
+    {
+      description.map((bullet) => {
+        return (
+          <Fragment>
+            {bullet}
+            {<br />}
+          </Fragment>
+        )
+      })
+    }
   </p>
 </div>

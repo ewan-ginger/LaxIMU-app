@@ -1,7 +1,7 @@
 [
     {
 		"name": "SandScape",
-		"description": "Hello",
+		"description": "Exploration of human-machine interaction",
 		"url": "/projects/sandscape",
         "image": "../assets/Projects/SandScape-Cover.png",
 		"row": 1,
@@ -9,7 +9,7 @@
 	},
 	{
 		"name": "NOAH",
-		"description": "Hello",
+		"description": "Drone-led search and rescue evolution",
 		"url": "/projects/noah",
         "image": "../assets/Projects/Noah-Cover.png",
 		"row": 1,
@@ -17,7 +17,7 @@
 	},
 	{
 		"name": "Vehicle Design Aerodynamics",
-		"description": "Hello",
+		"description": "Redesign of the classic shooting brake design",
 		"url": "/projects/vehicle",
         "image": "../assets/Projects/Vehicle-Cover.png",
 		"row": 2,
@@ -25,7 +25,7 @@
 	},
     {
 		"name": "UniSense",
-		"description": "Hello",
+		"description": "Reimagining smoke alarms to help firefighters",
 		"url": "/projects/unisense",
         "image": "../assets/Projects/UniSense-Cover.png",
 		"row": 2,
@@ -33,7 +33,7 @@
 	},
 	{
 		"name": "Bike Frame Design & FEA",
-		"description": "Hello",
+		"description": "Bike frame FEA case study",
 		"url": "/projects/bikeframe",
         "image": "../assets/Projects/BikeFrame-Cover.png",
 		"row": 2,
@@ -41,15 +41,15 @@
 	},
 	{
 		"name": "Coutts Strongboxes",
-		"description": "Hello",
+		"description": "Supercharging savings in the Coutts app",
 		"url": "/projects/strongbox",
         "image": "../assets/Projects/Strongbox-Cover.png",
 		"row": 3,
 		"recent": false
 	},
     {
-		"name": "Airline Passenger Satisfaction Data Analysis",
-		"description": "Hello",
+		"name": "Airline Satisfaction Data Analysis",
+		"description": "Data science case study",
 		"url": "/projects/datascience",
         "image": "../assets/Projects/DataScience-Cover.png",
 		"row": 3,
@@ -57,7 +57,7 @@
 	},
 	{
 		"name": "Spaceships",
-		"description": "Hello",
+		"description": "Battleships clone",
 		"url": "/projects/spaceships",
         "image": "../assets/Projects/Spaceships-Cover.png",
 		"row": 3,
@@ -65,7 +65,7 @@
 	},
 	{
 		"name": "LiveShape",
-		"description": "Hello",
+		"description": "Huawei Makeathon winner",
 		"url": "/projects/liveshape",
         "image": "../assets/Projects/LiveShape-Cover.png",
 		"row": 3,
