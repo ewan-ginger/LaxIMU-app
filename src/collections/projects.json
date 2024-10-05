@@ -17,7 +17,7 @@
 	},
 	{
 		"name": "Vehicle Design Aerodynamics",
-		"description": "Redesign of the classic shooting brake design",
+		"description": "Redesign and CFD of the shooting brake",
 		"url": "/projects/vehicle",
         "image": "../assets/Projects/Vehicle-Cover.png",
 		"row": 2,
@@ -25,7 +25,7 @@
 	},
     {
 		"name": "UniSense",
-		"description": "Reimagining smoke alarms to help firefighters",
+		"description": "Engineering alarms to help firefighters",
 		"url": "/projects/unisense",
         "image": "../assets/Projects/UniSense-Cover.png",
 		"row": 2,
@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Coutts Strongboxes",
-		"description": "Supercharging savings in the Coutts app",
+		"description": "Supercharging savings",
 		"url": "/projects/strongbox",
         "image": "../assets/Projects/Strongbox-Cover.png",
 		"row": 3,
