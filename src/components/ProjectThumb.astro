@@ -17,6 +17,6 @@ const { name, description, url, image } = Astro.props;
 <div class="bg-light-project-thumb dark:bg-dark-project-thumb overflow-hidden">
     <img src={image} class="w-full h-auto hover:scale-[1.1] ease-in-out duration-300" />
 </div>
-<span class="text-black dark:text-white font-bold pt-4">{name}</span>
+<span class="text-black dark:text-white font-bold pt-4"><span class="text-sm text-blue-medium">➔</span>  {name}</span>
 <span class="text-text-nav pb-8">{description}</span>
 </a>

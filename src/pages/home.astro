@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import projects from "../collections/projects.json";
+import ProjectThumb from "../components/ProjectThumb.astro";
+---
+
+<BaseLayout title="Ginger Workshops">
+    <div class="grid gap-10 grid-cols-1 lg:grid-cols-4">
+        <div class="grid grid-rows-2 col-span-2 h-min place-items-end">
+            <h1 class="h-min align-bottom font-[Jura] font-semibold text-7xl text-black dark:text-white pb-8 text-left">
+                Welcome to my workshop, <span class="text-blue-medium dark:text-blue-medium" >I'm Ewan Ginger.</span>
+            </h1>
+            <h1 class="h-full font-[Jura] font-semibold text-4xl text-text-nav pb-8 text-left">
+                A design engineer at Imperial College London. <br> <br> <span class="text-text-nav text-3xl md:hidden">Scroll down.</span>
+        </div>
+        <div class="col-span-2">
+          
+        </div>
+    </div>
+    <a class="w-full"
+        href="/projects"
+    >
+      <h2 class="w-full text-left pb-8 text-6xl font-bold font-['Jura'] text-black dark:text-white">
+        <span class="text-4xl text-blue-medium">➔</span> Recent Projects
+      </h2>
+    </a>
+    <div
+      class="grid items-stretch w-full grid-cols-1 my-8 gap-1 sm:grid-cols-3"
+    >
+      {
+        projects.map((project) => {
+          if (project.recent) {
+            return (
+            <ProjectThumb
+              name={project.name}
+              description={project.description}
+              image={project.image}
+              url={project.url}
+            />
+          )
+          }
+        })
+      }
+    </div>
+</BaseLayout>
