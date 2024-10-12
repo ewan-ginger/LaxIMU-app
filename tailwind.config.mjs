@@ -17,9 +17,9 @@ export default {
 			'text-nav': '#a3a3a3',
 			'light-project-thumb': '#c2c2c2',
 			'dark-project-thumb': '#303030',
-			'blue-light': '#3b82f6',
-			'blue-medium': '#2563eb',
-			'blue-dark': '#1d4ed8',
+			'blue-light': '#0094FF',
+			'blue-medium': '#0072F8',
+			'blue-dark': '#0045F8',
 			'orange-light': '#FF952D',
 			'orange-medium': '#EE7600',
 			'orange-dark': '#914800'
