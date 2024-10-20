@@ -1,15 +1,17 @@
 ---
 import experiences from '../collections/experiences.json';
 import education from '../collections/education.json';
+import skills from '../collections/skills.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Experience from '../components/Experience.astro';
+import Skill from '../components/Skill.astro';
 ---
 
 <BaseLayout title="About">
-    <div class=" p-8 pt-2 rounded-xl grid flex-col grid-cols-1 lg:grid-cols-3 gap-16">
-      <img class="" src="../assets/Smiley Ewan in Loule.png">
+    <div class="pt-2 grid flex-col grid-cols-1 lg:grid-cols-3 gap-16">
+      <img class="hidden md:block" src="../assets/Smiley Ewan in Loule.png">
       <div class="col-span-2">
-        <h1 class="text-black dark:text-white text-6xl font-bold font-['Jura'] py-8">
+        <h1 class="text-black dark:text-white text-5xl md:text-6xl font-bold font-['Jura'] pb-8 md:pt-8 ">
           GET TO KNOW ME.
         </h1>
         <h2 class="text-3xl pb-8 font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
@@ -19,6 +21,7 @@ import Experience from '../components/Experience.astro';
           <h2 class="text-dark-background-medium dark:text-text-nav text-xl">
             A versatile engineer and designer pursuing an integrated Masters in Design Engineering at Imperial College London. Possessing the abilities to carry a project from inception through to final solution with the firm belief that the integration of design thinking and technical engineering is vital to driving change and fostering innovation. Interested in <a href="/photography" class="text-blue-medium underline">photography</a>.
           </h2>
+          <img class="block md:hidden px-24" src="../assets/Smiley Ewan in Loule.png">
           <h2 class="text-3xl font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
             Experience
           </h2>
@@ -86,6 +89,17 @@ import Experience from '../components/Experience.astro';
           <h2 class="text-3xl font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
             Skills
           </h2>
+          <div class="w-full flex flex-wrap gap-x-2 gap-y-2">
+            {
+              skills.map((skill) => {
+                return (
+                      <Skill
+                        skill={skill.skill}
+                      />
+                    )}
+              )
+            }
+          </div>
         </div>
       </div>
     </div>

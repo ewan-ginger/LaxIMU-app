@@ -5,23 +5,25 @@ import ProjectThumb from "../components/ProjectThumb.astro";
 ---
 
 <BaseLayout title="Ginger Workshops">
-    <div class="grid gap-10 grid-cols-1 lg:grid-cols-4">
-        <div class="grid grid-rows-2 col-span-2 h-min place-items-end">
-            <h1 class="h-min align-bottom font-[Jura] font-semibold text-7xl text-black dark:text-white pb-8 text-left">
+    <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-4">
+        <div class="grid md:grid-rows-2 col-span-2 h-min">
+            <h1 class="h-min align-bottom font-[Jura] font-semibold text-5xl md:text-7xl text-black dark:text-white pb-8 text-left">
                 Welcome to my workshop, <span class="text-blue-medium dark:text-blue-medium" >I'm Ewan Ginger.</span>
             </h1>
-            <h1 class="h-full font-[Jura] font-semibold text-4xl text-text-nav pb-8 text-left">
-                A design engineer at Imperial College London. <br> <br> <span class="text-text-nav text-3xl md:hidden">Scroll down.</span>
+            <h1 class="h-min font-[Jura] font-semibold text-2xl md:text-4xl text-text-nav text-left pb-8">
+                A Design Engineer at Imperial College London.
+            </h1>    
         </div>
-        <div class="col-span-2">
-          
+        <div class="col-span-2 pb-8">
+          <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js" async></script>
+          <spline-viewer hint loading-anim-type="spinner-small-dark" url="https://prod.spline.design/JoCOTQXgmkt5G2ru/scene.splinecode"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAATCAYAAADxlA/3AAAJ+ElEQVR4AQCBAH7/AFNWwgBTVsIAU1bCAFNWwgBUVsEAVFbAAFVWwABWVr8AVla+AFdWvQxYVr0mWFe8QVhXvFlZV7tsWVe7eVlXu31ZV7t5WFe8bVhXvFpXVr1BV1a+JlZWvwtVVsAAVFbBAFNWwgBSVsMAUlbDAFFWxABQVcUAUFXFAFBVxgBPVcYAAIEAfv8AVFbBAFRWwQBUVsAAVVbAAFVWvwBWVr8AVla+AFdWvQBYV70FWFe8HllXuzhZV7tTWle6a1pXun9aV7qMWle6kFpXuoxaV7p/WVe7bFlXu1NYV7w3V1a9G1dWvgJWVr8AVVbAAFRWwQBTVsIAUlbDAFJWwwBRVsQAUVbEAFFWxAAAgQB+/wBXVr4AV1a+AFdWvQBXV70AWFe8AFhXvABZV7sAWle6DlpXuiNbV7k8XFe4WFxXuHNcV7eMXVe3n11Xt6xdV7exXVe3rVxXt59cV7iLW1e4cVtXuVRaV7o3WVe7HFhXvAZXV70AV1a+AFZWvwBVVsAAVFbAAFRWwQBUVsEAVFbBAACBAH7/AFpXugJaV7oCW1e5AltXuQRbV7gIXFe4EF1Xtx1dV7YvXli1RV9YtWBfWLR8YFizmGBYs7FgWLPGYViy02FYsthgWLLTYFizxWBYs7BfWLSVXli1dl5XtlhdV7c7XFe4I1tXuRBaV7oDWVe6AFlXuwBYV7wAWFe8AFdXvQNXV70FAIEAfv8AXli1GV5YtRlfWLQaX1i0HWBYsyJgWLMrYViyOWFYsUxiWLBjY1iwf2NYr5xkWK66ZFmu1GVZrullWa33ZVmt+2VZrvZkWa7oZFiu0mNYr7VjWLCWYlixdWFYslZgWLM8X1i0J19YtRheWLUPXVe2DF1XtwxcV7cOXFe4EFxXuBIAgQB+/wBjWLAmY1iwJ2NYryhjWK8rZFmuMWVZrjtlWa1KZlmsXmdZq3dnWauUaFmqs2hZqdFpWantaVmo/2lZqP9pWaj/aVmo/2lZqf9oWanraFmqzWdZq6xmWauKZlmsaWVZrUxkWa41Y1ivJGJYsBpiWLEUYViyE2FYshRgWLIVYFizFgCBAH7/AGdZqyhnWasoZ1mqKmhZqi5oWak0aVmpP2lZqE9qWqdla1qmf2tapp1sWqW9bVqk3G1apPltWqT/bVqj/21ao/9tWqP/bVqk/21apPhsWqXZbFqmt2tappRqWqdyaVmoU2hZqTpnWaooZ1mrG2ZZrBRlWa0RZVmtEWVZrRJkWa4TAIEAfv8AalqnIWpapyFrWqYja1qmJ2xapS5sWqU6bVqkS21ao2FuWqJ8b1qim3BaobtwWqDccVug+XFbn/9xW5//cVuf/3Fbn/9xW5//cFug+3BaodxvWqG5blqilW5ao3JtWqRSbFqlOGtapiRqWqcXalqoD2laqAtpWakKaFmpCmhZqQsAgQB+/wBtWqQWbVqkF21aoxluWqMdblqiJG9aojBvW6FAcFugV3Fbn3JxW5+Rclues3NbndRzW53yc1uc/3RbnP90W5z/dFuc/3NbnP9zW532clud2HJbnrVxW5+RcFugbnBboU5vWqIzblqjH21aoxFsWqQIbFqlBGtapQJrWqYCa1qmAwCBAH7/AG5aog1uWqIObluiD29boRNvW6EacFugJXFbnzZxW55MclueZ3NbnYZzW5yndFubyHRbm+Z1W5v/dVua/3Vbmv91W5r/dVub/3Rbm+90W5zSc1ucsHNbnYxyW55pcVufSnBboC9vW6Ebb1uiDW5aogVtWqMAbVqkAG1apABsWqQAAIEAfv8AbluiCW5bogluW6ILb1uhDm9boRRwW6AecVufLXFbnkJyW51dc1ude3RbnJx0W5u8dVyb2nVcmvN1XJr/dVya/3Vcmv91XJr8dVyb53Rbm8t0W5yqc1udh3JbnmZxW55IcFufL3BboBtvW6EObluiBm5bowNtWqMCbVqjAm1apAMAgQB+/wBtW6MKbVujCm1bowpuW6IMbluiEW9boRpwW6AocFufO3Fbn1RyW55xcludkHNbnLBzW5zNdFyb5XRcm/Z0XJv+dFyb/XRcm/F0XJzdc1ucwnNbnaNyW56CcVufY3Bbn0dvW6Avb1uhHm5bohJtW6MMbVukCWxapAlsWqQKbFqlCgCBAH7/AGtapg1rWqYMa1qlDGtapQxsW6QPbVukFm1boyJuW6Izb1uhSXBboGRwW5+CcVufoHFbnrxyW57Uclud5XJbne1yW53sclue4XFbns9xW5+2cFufmXBboHpvW6FdbluiQ21boy5tW6QfbFukFWtapRBrWqYPalqmEGpapxJqWqcTAIEAfv8AaFqpDWhaqQxoWqkLaFqoCmlaqAtqWqcPalqmGGtbpSdsW6Q7bVukU21bo29uW6KLbluhpm9bobxvW6HMb1uh1W9bodRvW6HLb1uhum5boqJuW6KHbVuja2xbpFFrW6U5a1qmJ2papxppWqcSaFqoD2haqRBnWqkSZ1qqFWdaqhYAgQB+/wBkWq0IZFqtB2VarARlWqwBZlqrAGZaqwJnWqoJaFqpFWhaqCZpWqc7alqmVGtbpm9rW6WIa1ulnWxbpK1sW6S1bFuktGxbpKxrW6Wca1ulh2pbpm5qWqdUaVqoPGhaqCdnWqkXZ1qqDGZaqwdlWqwGZVqsCWRarQxkWq0QZFqtEgCBAH7/AGFZsQBhWbEAYVmwAGJZsABiWa8AY1quAGRargBkWq0AZVqsC2Zaqx5nWqo1Z1qpTWhaqWRoWqh4aFqoh2laqI9pWqiPaFqoh2haqHhoWqlkZ1qqTWZaqjZmWqsgZVqsDWRarQBjWq4AY1mvAGJZrwBiWbAAYVmwAGFZsQJhWbEFAIEAfv8AXlm0AF5ZtABeWbMAX1mzAF9ZsgBgWbIAYVmxAGFZsABiWa8AY1quAGRarRRkWq0rZVqsQGVarFNmWqthZlqraWZaq2lmWqthZVqsU2VarEFkWq0rZFqtFWNargFiWa8AYVmwAGFZsQBgWbIAX1myAF9ZswBeWbQAXlm0AF5ZtAAAgQB+/wBcWbYAXFm2AFxZtgBdWbUAXVm1AF5ZtABfWbMAX1myAGBZsgBhWbEAYlmwAGJarw5jWq4jY1quNWNarkJkWq1JZFqtSWNarkJjWq41Y1quI2Jarw5iWbAAYVmxAGBZsgBfWbIAX1mzAF5ZtABdWbUAXVm1AFxZtgBcWbYAXFm2AAGBAH7/AFtYuABbWLgAW1m3AFtZtwBcWbYAXVm1AF1ZtQBeWbQAX1mzAGBZsgBgWbEAYVmwAGJZsBJiWq8jYlqvMGJarzdiWq83YlqvMGJaryNiWbASYVmwAGBZsQBgWbIAX1mzAF5ZtABdWbUAXVm1AFxZtgBbWbcAW1m3AFtYuABbWLgANkMN1wlOD4MAAAAASUVORK5CYII=" alt="Spline preview" style="width: 100%; height: 100%;"/></spline-viewer>
         </div>
     </div>
     <a class="w-full"
         href="/projects"
     >
-      <h2 class="w-full text-left pb-8 text-6xl font-bold font-['Jura'] text-black dark:text-white">
-        <span class="text-4xl text-blue-medium">➔</span> Recent Projects
+      <h2 class="w-full text-left pb-8 text-4xl md:text-6xl font-bold font-['Jura'] text-black dark:text-white">
+        <span class="md:text-4xl text-blue-medium">➔</span> Recent Projects
       </h2>
     </a>
     <div
