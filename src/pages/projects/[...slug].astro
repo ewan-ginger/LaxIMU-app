@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import projects from "../../collections/projects.json";
+
+export async function getStaticPaths() {
+  return projects.map(({ slug, name, description, image }) => {
+    return {
+      params: { slug },
+      props: { name, description, image },
+    };
+  });
+}
+
+console.log(projects)
+const { name, description, image } = Astro.props;
+---
+
+<BaseLayout title={name}>
+  <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-4">
+    <div class="grid md:grid-rows-2 col-span-2 h-min">
+        <h1 class="h-min align-bottom font-[Jura] font-semibold text-5xl md:text-7xl text-black dark:text-white pb-8 text-left">
+            {name}
+        </h1>
+        <h1 class="h-min font-[Jura] font-semibold text-2xl md:text-4xl text-text-nav text-left pb-8">
+            {description}
+        </h1>    
+    </div>
+    <div class="col-span-2 pb-8">
+      <img src={image}>
+    </div>
+</div>
+</BaseLayout>
