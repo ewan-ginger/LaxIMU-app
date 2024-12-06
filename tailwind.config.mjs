@@ -22,7 +22,8 @@ export default {
 			'blue-dark': '#0045F8',
 			'orange-light': '#FF952D',
 			'orange-medium': '#EE7600',
-			'orange-dark': '#914800'
+			'orange-dark': '#914800',
+			'connected-green': '#62CE8D'
 		  },
 		extend: {},
 	},

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About">
-  <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-5">
+  <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-5 mt-10">
     <div class="grid md:grid-rows-2 col-span-2 h-min">
         <h1 class="h-min align-bottom font-[Jura] font-semibold text-5xl md:text-7xl text-black dark:text-white pb-8 text-left">
             Welcome to the <span class="text-blue-medium dark:text-blue-medium" >LaxIMU</span> portal.
@@ -13,11 +13,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </h1>    
     </div>
     <div class="col-span-3 pb-8">
-      <img src="/assets/IMU_Device_Shaft_Visual.png">
+      <img src="/assets/IMU_Device_Shaft_Visual.png" class="rounded-3xl">
     </div>
 </div>
-<div class="grid md:gap-10 grid-cols-1 lg:grid-cols-2 pb-10">
-<div class="w-full bg-light-project-thumb dark:bg-dark-project-thumb px-10 py-14 rounded-2xl border">
+<div class="grid md:gap-10 grid-cols-1 lg:grid-cols-2 pb-10 gap-10">
+<div class="w-full px-10 py-14 rounded-2xl border dark:border-text-nav">
       <h2 class="w-full text-left pb-8 text-2xl md:text-4xl font-bold font-['Jura'] text-black dark:text-white">
         <span class="md:text-4xl text-blue-medium">➔</span> The Device
       </h2>
@@ -25,10 +25,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         The web app for connecting your LaxIMU device, viewing output data on your game and visualising your form.
       </h1>
       <div class="flex justify-center items-center">
-        <img src="/assets/IMU_Device_Exploded.png" width="400px" class="align-center">
+        <img src="/assets/IMU_Device_Exploded.png" width="300px" class="align-center">
       </div>
 </div>
-<div class="w-full  bg-light-project-thumb dark:bg-dark-project-thumb px-10 py-14 rounded-2xl border">
+<div class="w-full px-10 py-14 rounded-2xl border dark:border-text-nav">
   <h2 class="w-full text-left pb-8 text-2xl md:text-4xl font-bold font-['Jura'] text-black dark:text-white">
     <span class="md:text-4xl text-blue-medium">➔</span> The Software
   </h2>
