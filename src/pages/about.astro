@@ -1,106 +1,43 @@
 ---
-import experiences from '../collections/experiences.json';
-import education from '../collections/education.json';
-import skills from '../collections/skills.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Experience from '../components/Experience.astro';
-import Skill from '../components/Skill.astro';
 ---
 
 <BaseLayout title="About">
-    <div class="pt-2 grid flex-col grid-cols-1 lg:grid-cols-3 gap-16">
-      <img class="hidden md:block" src="../assets/Smiley Ewan in Loule.png">
-      <div class="col-span-2">
-        <h1 class="text-black dark:text-white text-5xl md:text-6xl font-bold font-['Jura'] pb-8 md:pt-8 ">
-          GET TO KNOW ME.
+  <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-5">
+    <div class="grid md:grid-rows-2 col-span-2 h-min">
+        <h1 class="h-min align-bottom font-[Jura] font-semibold text-5xl md:text-7xl text-black dark:text-white pb-8 text-left">
+            Welcome to the <span class="text-blue-medium dark:text-blue-medium" >LaxIMU</span> portal.
         </h1>
-        <h2 class="text-3xl pb-8 font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
-          About
-        </h2>
-        <div class="grid lg:grid-cols-1 gap-10">
-          <h2 class="text-dark-background-medium dark:text-text-nav text-xl">
-            A versatile engineer and designer pursuing an integrated Masters in Design Engineering at Imperial College London. Possessing the abilities to carry a project from inception through to final solution with the firm belief that the integration of design thinking and technical engineering is vital to driving change and fostering innovation. Interested in <a href="/photography" class="text-blue-medium underline">photography</a>.
-          </h2>
-          <img class="block md:hidden px-24" src="../assets/Smiley Ewan in Loule.png">
-          <h2 class="text-3xl font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
-            Experience
-          </h2>
-          <div class="pl-10">
-            {
-              experiences.map((experience, loop) => {
-                return (
-                  <>
-                    {loop == 0 || loop == 1 ? (
-                      <div class="pb-10 border-l border-text-nav dark:border-text-nav">
-                        <Experience
-                          dates={experience.dates}
-                          role={experience.role}
-                          company={experience.company}
-                          description={experience.description}
-                          logo={experience.logo}
-                        />
-                      </div>
-                    ) : (
-                      <Experience
-                        dates={experience.dates}
-                        role={experience.role}
-                        company={experience.company}
-                        description={experience.description}
-                        logo={experience.logo}
-                      />
-                    )}
-                  </>
-                )
-              })
-            }
-          </div>
-          <h2 class="text-3xl font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
-            Education
-          </h2>
-          <div class="pl-10">
-            {
-              education.map((education, loop) => {
-                return (
-                  <>
-                    {loop == 0 || loop == 1 ? (
-                      <div class="pb-10 border-l border-text-nav dark:border-text-nav">
-                        <Experience
-                          dates={education.dates}
-                          role={education.role}
-                          company={education.company}
-                          description={education.description}
-                          logo={education.logo}
-                        />
-                      </div>
-                    ) : (
-                      <Experience
-                        dates={education.dates}
-                        role={education.role}
-                        company={education.company}
-                        description={education.description}
-                        logo={education.logo}
-                      />
-                    )}
-                  </>
-                )
-              })
-            }
-          </div>
-          <h2 class="text-3xl font-['Jura'] font-bold text-black dark:text-white underline decoration-1 underline-offset-4">
-            Skills
-          </h2>
-          <div class="w-full flex flex-wrap gap-x-2 gap-y-2 pl-3">
-            {
-              skills.map((skill) => {
-                return (
-                      <Skill
-                        skill={skill.skill}
-                      />
-                    )}
-              )
-            }
-          </div>
-        </div>
-      </div>
+        <h1 class="h-min font-[Jura] font-semibold text-xl md:text-xl text-text-nav text-left pb-8">
+            The web app for connecting your LaxIMU device, viewing output data on your game and visualising your form.
+        </h1>    
     </div>
+    <div class="col-span-3 pb-8">
+      <img src="/assets/IMU_Device_Shaft_Visual.png">
+    </div>
+</div>
+<div class="grid md:gap-10 grid-cols-1 lg:grid-cols-2 pb-10">
+<div class="w-full bg-light-project-thumb dark:bg-dark-project-thumb px-10 py-14 rounded-2xl border">
+      <h2 class="w-full text-left pb-8 text-2xl md:text-4xl font-bold font-['Jura'] text-black dark:text-white">
+        <span class="md:text-4xl text-blue-medium">➔</span> The Device
+      </h2>
+      <h1 class="h-min font-[Jura] font-semibold text-xl md:text-xl text-dark-project-thumb dark:text-text-nav text-left pb-8">
+        The web app for connecting your LaxIMU device, viewing output data on your game and visualising your form.
+      </h1>
+      <div class="flex justify-center items-center">
+        <img src="/assets/IMU_Device_Exploded.png" width="400px" class="align-center">
+      </div>
+</div>
+<div class="w-full  bg-light-project-thumb dark:bg-dark-project-thumb px-10 py-14 rounded-2xl border">
+  <h2 class="w-full text-left pb-8 text-2xl md:text-4xl font-bold font-['Jura'] text-black dark:text-white">
+    <span class="md:text-4xl text-blue-medium">➔</span> The Software
+  </h2>
+  <div class="flex justify-center items-center">
+    <img src="/assets/IMU_Device_Exploded.png" width="400px" class="align-center">
+  </div>
+  <h1 class="h-min font-[Jura] font-semibold text-xl md:text-xl text-dark-project-thumb dark:text-text-nav text-left pb-8">
+    The web app for connecting your LaxIMU device, viewing output data on your game and visualising your form.
+  </h1>
+</div>
+</div>
 </BaseLayout>

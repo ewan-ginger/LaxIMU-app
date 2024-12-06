@@ -5,18 +5,18 @@
         "highlighted": false
 	},
 	{
-		"name": "Projects",
-		"url": "/projects",
+		"name": "Data Analytics",
+		"url": "/analytics",
         "highlighted": false
 	},
     {
-		"name": "CV",
-		"url": "/cv",
+		"name": "Visualisations",
+		"url": "/visualisations",
         "highlighted": false
 	},
     {
-		"name": "Contact",
-		"url": "mailto:ewanginger067@gmail.com",
+		"name": "Connect Device",
+		"url": "/connect",
         "highlighted": true
 	}
 ]

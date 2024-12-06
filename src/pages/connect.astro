@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Connect Device">
+    <div class="grid md:gap-10 grid-cols-1 lg:grid-cols-2">
+        <div class="w-full">
+            <button id="connect" class="text-black dark:text-white hover:text-black dark:hover:text-white bg-transparent sm:text-white sm:hover:text-white sm:bg-gradient-to-bl hover:bg-transparent from-blue-light via-blue-medium to-blue-dark sm:hover:bg-gradient-to-br sm:focus:ring-4 sm:focus:outline-none sm:focus:ring-blue-300 sm:dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto">Connect</button>
+            <button id="on">Turn On</button>
+            <buttonb id="off">Turn Off</button>
+        </div>
+    </div>
+
+    <script>
+        let ledCharacteristic;
+      
+        document.getElementById('connect').addEventListener('click', async () => {
+          try {
+            console.log('Requesting Bluetooth device...');
+            const device = await navigator.bluetooth.requestDevice({
+              filters: [{ services: ['19b10000-e8f2-537e-4f6c-d104768a1214'] }]
+            });
+      
+            console.log('Device selected:', device.name);
+      
+            const server = await device.gatt.connect();
+            console.log('Connected to GATT server');
+      
+            const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
+            console.log('Service discovered');
+      
+            ledCharacteristic = await service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214');
+            console.log('Characteristic discovered');
+      
+            console.log('Connected to device');
+          } catch (error) {
+            console.error('Error during connection:', error);
+          }
+        });
+      
+        document.getElementById('on').addEventListener('click', async () => {
+          if (ledCharacteristic) {
+            try {
+              console.log('Writing value to turn LED ON');
+              await ledCharacteristic.writeValue(Uint8Array.of(1));
+              console.log('LED turned on');
+            } catch (error) {
+              console.error('Error turning on LED:', error);
+            }
+          } else {
+            console.log('LED characteristic not available');
+          }
+        });
+      
+        document.getElementById('off').addEventListener('click', async () => {
+          if (ledCharacteristic) {
+            try {
+              console.log('Writing value to turn LED OFF');
+              await ledCharacteristic.writeValue(Uint8Array.of(0));
+              console.log('LED turned off');
+            } catch (error) {
+              console.error('Error turning off LED:', error);
+            }
+          } else {
+            console.log('LED characteristic not available');
+          }
+        });
+      </script>
+</BaseLayout>
