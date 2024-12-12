@@ -34,11 +34,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <h2 class="mb-4 dark:text-text-nav">
               About to jump into a game or training? Hit start recording so you don't miss out on all the analytics!
             </h2>
-            <button id="on" class="inactive-button w-min mb-10 text-black dark:text-white hover:text-black dark:hover:text-white bg-transparent sm:text-white sm:hover:text-white sm:bg-gradient-to-bl hover:bg-transparent from-blue-light via-blue-medium to-blue-dark sm:hover:bg-gradient-to-br sm:focus:ring-4 sm:focus:outline-none sm:focus:ring-blue-300 sm:dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0  md:w-auto" disabled>Start Recording</button>
+            <button id="start" class="inactive-button w-min mb-10 text-black dark:text-white hover:text-black dark:hover:text-white bg-transparent sm:text-white sm:hover:text-white sm:bg-gradient-to-bl hover:bg-transparent from-blue-light via-blue-medium to-blue-dark sm:hover:bg-gradient-to-br sm:focus:ring-4 sm:focus:outline-none sm:focus:ring-blue-300 sm:dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0  md:w-auto" disabled>Start Recording</button>
             <h2 class="mb-4 dark:text-text-nav">
               Just finished up? Make sure to hit stop recording!
             </h2>
-            <button id="off" class="inactive-button w-min text-black dark:text-white hover:text-black dark:hover:text-white bg-transparent sm:text-white sm:hover:text-white sm:bg-gradient-to-bl hover:bg-transparent from-blue-light via-blue-medium to-blue-dark sm:hover:bg-gradient-to-br sm:focus:ring-4 sm:focus:outline-none sm:focus:ring-blue-300 sm:dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto" disabled>Stop Recording</button>
+            <button id="stop" class="inactive-button w-min text-black dark:text-white hover:text-black dark:hover:text-white bg-transparent sm:text-white sm:hover:text-white sm:bg-gradient-to-bl hover:bg-transparent from-blue-light via-blue-medium to-blue-dark sm:hover:bg-gradient-to-br sm:focus:ring-4 sm:focus:outline-none sm:focus:ring-blue-300 sm:dark:focus:ring-blue-800 h-10 rounded-full relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto" disabled>Stop Recording</button>
           </div>
         </div>
     </div>
@@ -58,119 +58,162 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
     </style>
 
-    <script>
-        let ledCharacteristic;
-        let isConnected = false; // Flag to track connection state
-        let device; // Store the Bluetooth device instance
+<script>
+  let commandCharacteristic;
+let dataCharacteristic;
+let isConnected = false;
+let device;
 
-        const connectButton = document.getElementById('connect');
-        const statusBox = document.getElementById('connection-status');
-        const turnOnButton = document.getElementById('on');
-        const turnOffButton = document.getElementById('off');
+const connectButton = document.getElementById('connect');
+const statusBox = document.getElementById('connection-status');
+const startRecordingButton = document.getElementById('on');
+const stopRecordingButton = document.getElementById('off');
 
-        const updateStatusBox = (connected) => {
-          if (connected) {
-            statusBox.textContent = 'Connected';
-            statusBox.style.backgroundColor = '#62CE8D';
+// Supabase configuration
+const SUPABASE_URL = 'https://vdtyihdwrofvlfkaevgt.supabase.co';
 
-            // Enable and style buttons
-            turnOnButton.disabled = false;
-            turnOffButton.disabled = false;
-            turnOnButton.classList.remove('inactive-button');
-            turnOnButton.classList.add('active-button');
-            turnOffButton.classList.remove('inactive-button');
-            turnOffButton.classList.add('active-button');
-          } else {
-            statusBox.textContent = 'Disconnected';
-            statusBox.style.backgroundColor = '#CE6862';
+const supabase = createClient(SUPABASE_URL);
 
-            // Disable and style buttons
-            turnOnButton.disabled = true;
-            turnOffButton.disabled = true;
-            turnOnButton.classList.remove('active-button');
-            turnOnButton.classList.add('inactive-button');
-            turnOffButton.classList.remove('active-button');
-            turnOffButton.classList.add('inactive-button');
-          }
-        };
+const updateStatusBox = (connected) => {
+  if (connected) {
+    statusBox.textContent = 'Connected';
+    statusBox.style.backgroundColor = '#62CE8D';
 
-        // Initialize status box and buttons to "Disconnected" state
-        updateStatusBox(false);
+    startRecordingButton.disabled = false;
+    stopRecordingButton.disabled = false;
+    startRecordingButton.classList.remove('inactive-button');
+    startRecordingButton.classList.add('active-button');
+    stopRecordingButton.classList.remove('inactive-button');
+    stopRecordingButton.classList.add('active-button');
+  } else {
+    statusBox.textContent = 'Disconnected';
+    statusBox.style.backgroundColor = '#CE6862';
 
-        connectButton.addEventListener('click', async () => {
-          if (!isConnected) {
-            try {
-              console.log('Requesting Bluetooth device...');
-              device = await navigator.bluetooth.requestDevice({
-                filters: [{ services: ['19b10000-e8f2-537e-4f6c-d104768a1214'] }]
-              });
+    startRecordingButton.disabled = true;
+    stopRecordingButton.disabled = true;
+    startRecordingButton.classList.remove('active-button');
+    startRecordingButton.classList.add('inactive-button');
+    stopRecordingButton.classList.remove('active-button');
+    stopRecordingButton.classList.add('inactive-button');
+  }
+};
 
-              console.log('Device selected:', device.name);
+updateStatusBox(false);
 
-              const server = await device.gatt.connect();
-              console.log('Connected to GATT server');
+connectButton.addEventListener('click', async () => {
+  if (!isConnected) {
+    try {
+      device = await navigator.bluetooth.requestDevice({
+        filters: [{ services: ['19b10000-e8f2-537e-4f6c-d104768a1214'] }]
+      });
 
-              const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
-              console.log('Service discovered');
+      const server = await device.gatt.connect();
+      const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
 
-              ledCharacteristic = await service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214');
-              console.log('Characteristic discovered');
+      commandCharacteristic = await service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214');
+      dataCharacteristic = await service.getCharacteristic('19b10002-e8f2-537e-4f6c-d104768a1214');
 
-              console.log('Connected to device');
+      isConnected = true;
+      connectButton.textContent = 'Disconnect';
+      updateStatusBox(true);
+    } catch (error) {
+      console.error('Error during connection:', error);
+    }
+  } else {
+    try {
+      if (device && device.gatt.connected) {
+        await device.gatt.disconnect();
+      }
+      isConnected = false;
+      connectButton.textContent = 'Connect';
+      updateStatusBox(false);
+    } catch (error) {
+      console.error('Error during disconnection:', error);
+    }
+  }
+});
 
-              // Update button text, state, and status box
-              isConnected = true;
-              connectButton.textContent = 'Disconnect';
-              updateStatusBox(true);
-            } catch (error) {
-              console.error('Error during connection:', error);
-            }
-          } else {
-            try {
-              console.log('Disconnecting from device...');
-              if (device && device.gatt.connected) {
-                await device.gatt.disconnect();
-                console.log('Device disconnected');
-              }
+startRecordingButton.addEventListener('click', async () => {
+  if (commandCharacteristic) {
+    try {
+      await commandCharacteristic.writeValue(new TextEncoder().encode('start'));
+      console.log('Recording started');
+    } catch (error) {
+      console.error('Error starting recording:', error);
+    }
+  }
+});
 
-              // Update button text, state, and status box
-              isConnected = false;
-              connectButton.textContent = 'Connect';
-              updateStatusBox(false);
-            } catch (error) {
-              console.error('Error during disconnection:', error);
-            }
-          }
-        });
+stopRecordingButton.addEventListener('click', async () => {
+  if (commandCharacteristic && dataCharacteristic) {
+    try {
+      await commandCharacteristic.writeValue(new TextEncoder().encode('stop'));
+      console.log('Recording stopped. Requesting data...');
 
-        document.getElementById('on').addEventListener('click', async () => {
-          if (ledCharacteristic) {
-            try {
-              console.log('Writing value to turn LED ON');
-              await ledCharacteristic.writeValue(Uint8Array.of(1));
-              console.log('LED turned on');
-            } catch (error) {
-              console.error('Error turning on LED:', error);
-            }
-          } else {
-            console.log('LED characteristic not available');
-          }
-        });
+      const gameScore = prompt('Enter the game score:');
+      if (gameScore === null) {
+        console.log('No game score entered.');
+        return;
+      }
 
-        document.getElementById('off').addEventListener('click', async () => {
-          if (ledCharacteristic) {
-            try {
-              console.log('Writing value to turn LED OFF');
-              await ledCharacteristic.writeValue(Uint8Array.of(0));
-              console.log('LED turned off');
-            } catch (error) {
-              console.error('Error turning off LED:', error);
-            }
-          } else {
-            console.log('LED characteristic not available');
-          }
-        });
-    </script>
+      const receivedData = [];
+      let chunk;
+      do {
+        chunk = await dataCharacteristic.readValue();
+        const chunkData = new TextDecoder().decode(chunk);
+        receivedData.push(chunkData);
+      } while (chunk.byteLength > 0);
+
+      const fullData = receivedData.join('');
+
+      // Upload to Supabase
+      const { data, error } = await supabase.from('imu_data').insert([
+        {
+          game_score: gameScore,
+          data: fullData,
+          timestamp: new Date().toISOString(),
+        },
+      ]);
+
+      if (error) {
+        console.error('Error uploading to Supabase:', error);
+      } else {
+        console.log('Data successfully uploaded to Supabase:', data);
+      }
+
+      // Send email notification
+      const emailResponse = await supabase.rpc('send_email', {
+        recipient: 'recipient@example.com', // Replace with your recipient email
+        subject: 'New IMU Data Recorded',
+        message: `A new IMU recording was uploaded with the following details:\n\nGame Score: ${gameScore}\nTimestamp: ${new Date().toISOString()}`,
+      });
+
+      if (emailResponse.error) {
+        console.error('Error sending email:', emailResponse.error);
+      } else {
+        console.log('Email notification sent successfully');
+      }
+
+      // Save as CSV
+      const blob = new Blob([fullData], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'imu_data.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      console.log('Data received and saved as imu_data.csv');
+    } catch (error) {
+      console.error('Error stopping recording or fetching data:', error);
+    }
+  }
+});
+
+
+</script>
+
 </BaseLayout>
 
 
